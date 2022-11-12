@@ -11,7 +11,7 @@ The method used to extract the artist and song names is not completely infallibl
 How To Use
 -----------
 ### Most Folks
-This project exposes a web source on github.io for use in OBS. Just point your web source here:
+This project exposes a web source on github.io for use in OBS. Just point your web source here: https://doopu.github.io/LofiGirlOverlay/
 
 When prompted to give permission to share your tab, grant it for current tab. If necessary, also click 'play' on the YouTube video.
 
