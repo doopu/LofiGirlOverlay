@@ -14,7 +14,7 @@ How To Use
 1. Open this link up (Chrome works for sure, not sure anything else): https://doopu.github.io/LofiGirlOverlay/
 2. When prompted to give permission to share your tab, grant it for current tab. It should be the one you're shown by default. Important: if you click the wrong tab, the software won't work as expected. Refresh and try again.
 3. If necessary, click the video to get it to start playing. It's supposed to autoplay but ¯\_(ツ)_/¯
-4. It will take a few seconds to warm up, but after that the artist and song name will appear underneath the YouTube video.
+4. It will take a few seconds to warm up, but after that the artist and song name will appear beside the YouTube video.
 5. Click the 'select file to write to' button and give the name of a new text file. You can also pick an existing file, but it will be overwritten by the tool.
 6. Go to OBS, create a new text source and point it towards your new file. Voila - you have the Lofi Girl credits without the stream on your screen.
 
