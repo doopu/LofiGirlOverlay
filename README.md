@@ -11,16 +11,17 @@ The method used to extract the artist and song names is not completely infallibl
 How To Use
 -----------
 ### Most Folks
-This project exposes a web source on github.io for use in OBS. Just point your web source here: https://doopu.github.io/LofiGirlOverlay/
+1. Open this link up (Chrome works for sure, not sure anything else): https://doopu.github.io/LofiGirlOverlay/
+2. When prompted to give permission to share your tab, grant it for current tab. It should be the one you're shown by default. Important: if you click the wrong tab, the software won't work as expected. Refresh and try again.
+3. If necessary, click the video to get it to start playing. It's supposed to autoplay but ¯\_(ツ)_/¯
+4. It will take a few seconds to warm up, but after that the artist and song name will appear underneath the YouTube video.
+5. Click the 'select file to write to' button and give the name of a new text file. You can also pick an existing file, but it will be overwritten by the tool.
+6. Go to OBS, create a new text source and point it towards your new file. Voila - you have the Lofi Girl credits without the stream on your screen.
 
-When prompted to give permission to share your tab, grant it for current tab. If necessary, also click 'play' on the YouTube video.
-
-It will take a few seconds to warm up, but after that the artist and song name will appear underneath the YouTube video. You can style this text by using the CSS override in OBS. The div ID to style is `#ocrOutput`.
-
-Then it's just a case of cropping the web source and putting it in your scene. Note that the text is left-aligned, so you can always crop up to the left edge of the text safely.
+For the sake of keeping the OCR working correctly, you can safely hide the tab that the software is working on, either by minimising the window or switching to a different tab in the same window. It will continue to work even in the background (for now - until the browser companies decide to break things...)!
 
 ### Self-hosted (for techies)
-If you do not want to use the github hosted version of the tool or otherwise wish to make more extensive changes than the CSS, you can download this repo, run `python web.py` and point your web source to http://localhost:8000/. You might evne be able to use the 'local file' functionality in OBS, it's your call.
+If you do not want to use the github hosted version of the tool or otherwise wish to make changes, you can download this repo, run `python web.py` and point your browser to http://localhost:8000/. This is useful if you want to do changes on the processing side of things (eg. splitting the song / author; improving the accracy... by the way, if you do the second one, do submit a pull request!)
 
 How It Works
 --------------
@@ -36,3 +37,4 @@ Improvement Points
 Expansion Ideas
 -------------------
 - Genericise this for any stream or YouTube video that has the song information encoded into the video itself.
+- Make it easier on the eye..?

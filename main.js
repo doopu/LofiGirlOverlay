@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
+    setupButtons();
     startCapture();
 });
 
@@ -6,7 +7,7 @@ var canvas;
 var context;
 var video;
 var image;
-
+var fileHandle;
 // This function deals with setting everything up. It creates a canvas,
 // video, and image element. We then ask for permission to view the user's
 // 'screen' - although we only want them to select the current tab.
@@ -15,8 +16,8 @@ var image;
 // start the OCR loop.
 const startCapture = async () => {
     canvas = document.createElement("canvas");
-    canvas.width = 1000;
-    canvas.height = 70;
+    canvas.width = 1400;
+    canvas.height = 100;
     context = canvas.getContext("2d");
     video = document.createElement("video");
     video.autoplay = true;
@@ -30,6 +31,17 @@ const startCapture = async () => {
         console.error("Error: " + err);
     }
 };
+
+async function writeFile(contents) {
+  // Create a FileSystemWritableFileStream to write to.
+  const writable = await fileHandle.createWritable();
+
+  // Write the contents of the file to the stream.
+  await writable.write(contents);
+
+  // Close the file and write the contents to disk.
+  await writable.close();
+}
 
 // The OCR loop takes whatever is currently the latest frame in the video track,
 // and draws it onto the canvas. We then get the image data from the canvas
@@ -80,6 +92,27 @@ function ocrLoop() {
             // in case the user is hovering over the video
             var textDiv = document.getElementById('ocrOutput');
             textDiv.innerHTML = text;
+            writeFile(text);
         }
     })
+}
+
+function setupButtons() {
+    const button = document.getElementById('setSaveFile');
+    button.addEventListener('click', function(event) {
+        setTargetFiles();
+        return false;
+    });
+}
+
+async function setTargetFiles() {
+    const opts = {
+        suggestedName: "lofi.txt",
+        types: [{
+            description: 'Text file',
+            accept: {'text/plain': ['.txt']},
+        }],
+    };
+
+    fileHandle = await window.showSaveFilePicker(opts);
 }
